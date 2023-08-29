@@ -4,12 +4,12 @@ import ButtonTopic from './components/ButtonTopic';
 const AllTopic = [
   {
     topic : 'AMR',
-    imageSource : require ('./assets/images/image1.jpg'),
+    imageSource : require ('./assets/AwarenessMaterial/AMR1.jpg'),
     Icon : "hands-wash"
   },
   {
     topic : 'role to play',
-    imageSource : require ('./assets/images/image2.jpg'),
+    imageSource : require ('./assets/AwarenessMaterial/AMR2.jpg'),
     Icon : "shield-virus"
   },
 ]
