@@ -17,12 +17,12 @@ const AllTopic = [
 
 export default function CWM() {
     return (
-        <View style={styles.container}>
-          <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={styles.container}>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <ButtonTopic topic={AllTopic[0].topic} photo={AllTopic[0].imageSource} IconName={AllTopic[0].Icon}/>
           <ButtonTopic topic={AllTopic[1].topic} photo={AllTopic[1].imageSource} IconName={AllTopic[1].Icon}/>
         </ScrollView>
-        </View>
+      </View>
     );
   }
   
