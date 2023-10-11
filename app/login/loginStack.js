@@ -1,14 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { Link } from 'expo-router';
+import Navigation from './navigation/Navigation';
+
 
 export default function LoginStack() {
   return (
-    <View style={styles.container}>
-      <Text>Login Stack</Text>
-      <Link href={"/(drawer)/home"}> Go to drawer </Link>
-      <StatusBar style="auto" />
-    </View>
+    <Navigation/>
   );
 }
 

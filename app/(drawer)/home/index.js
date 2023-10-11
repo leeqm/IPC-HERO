@@ -6,7 +6,7 @@ import { router } from 'expo-router';
 export default function HomePage() {
 
   const navi = () => {
-    router.push("/profile")
+    router.push("/Awareness")
   } 
 
   return (
@@ -20,7 +20,7 @@ export default function HomePage() {
         }}
       />
         <Text style={{ fontSize: 24 }}>Index page of Home Drawer</Text>
-        <Button title='Router to details' onPress={navi}/>
+        <Button title='Router to awareness' onPress={navi}/>
       </View>
   );
 }
