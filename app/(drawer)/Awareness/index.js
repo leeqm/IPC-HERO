@@ -75,7 +75,7 @@ export default function AwarenessPage() {
 
         <View style={styles.topic}>
         <Link href={"/Awareness/Ventilator%20Care Bundle"} asChild>
-          <Pressable style={styles.button}>
+          <Pressable style={styles.button} >
             <Text style={styles.textStyle}>Ventilator Care Bundle</Text>
           </Pressable>
         </Link>

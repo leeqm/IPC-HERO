@@ -20,7 +20,7 @@ export default function ButtonTopic ({topic, photo, IconName }) {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <ReactNativeZoomableView
-              maxZoom={2.0}
+              maxZoom={10.0}
               minZoom={1.0}
               zoomStep={0.5}
               initialZoom={1}
