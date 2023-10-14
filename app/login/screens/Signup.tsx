@@ -22,6 +22,7 @@ import  DateTimePicker  from '@react-native-community/datetimepicker';
 import Input from '../components/Input';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Loader from '../components/Loader';
+import { StartNotification } from "../Notification/StartNotification";
 
 
 const { width, height } = Dimensions.get("window");
@@ -75,6 +76,7 @@ export default function Signup({ navigation }: { navigation: any }) {
     }
     if (isValid) {
       handleSignup();
+      StartNotification();
     }
     
   };
@@ -299,7 +301,7 @@ export default function Signup({ navigation }: { navigation: any }) {
           </View>
         </View>
 
-        {/* Login Button */}
+        {/* Create Account Button */}
         <View style={styles.loginButton}>
           <TouchableOpacity onPress={validate}>
             <Text style={styles.loginButtonText}>
