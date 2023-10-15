@@ -20,7 +20,7 @@ export function useRouterNotifications() {
       }
       const url = response?.notification.request.content.data.url;
       if (url) {
-        router.replace(processUrl(url));
+        router.push(processUrl(url));
       }
     });
 
@@ -28,7 +28,7 @@ export function useRouterNotifications() {
     const subscription = Notifications.addNotificationResponseReceivedListener(
       (response) => {
         const url = response.notification.request.content.data.url;
-        router.replace(processUrl(url));
+        router.push(processUrl(url));
       }
     );
 
