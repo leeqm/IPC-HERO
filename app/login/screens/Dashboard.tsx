@@ -52,6 +52,7 @@ export default function Dashboard({ navigation }: { navigation: any }) {
   return (
     <View style={styles.container}>
       <Text style={{ fontSize: 25 }}>Welcome Fam!</Text>
+      <Text style={{ fontSize: 25 }}> {userInfo} </Text>
       <View>
         <TouchableOpacity style={styles.button} onPress={Modal}>
           <Text style={{ color: Colors.white, fontSize: 20 }}>Sign out</Text>

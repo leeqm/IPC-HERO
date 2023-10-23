@@ -40,6 +40,14 @@ export default function DrawerLayout() {
           title: "Wellness",
         }}
       />
+
+      <Drawer.Screen
+        name="Daily Goal"
+        options={{
+          drawerLabel: "Daily Goal",
+          title: "Daily Goal",
+        }}
+      />
     </Drawer>
   );
 }
