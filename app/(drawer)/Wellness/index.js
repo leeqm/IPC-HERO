@@ -1,6 +1,7 @@
-import { Text, View, StyleSheet, ScrollView } from "react-native";
+import { Text, View, StyleSheet, ScrollView, Image } from "react-native";
 import { DrawerToggleButton } from "@react-navigation/drawer";
 import { Drawer } from "expo-router/drawer";
+import { Avatar, Button, Card } from 'react-native-paper';
 //import { ScrollView } from "react-native-gesture-handler";
 import ButtonTopic from './components/ButtonTopic';
 
@@ -55,35 +56,68 @@ const AllTopic = [
     imageSource : require ('./assets/WellnessMaterial/wellness10.jpg'),
     Icon : "shield-virus"
   },
+  {
+    topic : 'Al-Ghazali',
+    imageSource : require ('./assets/WellnessMaterial/wellness11.jpg'),
+    Icon : "shield-virus"
+  },
+  {
+    topic : 'Muhammad Ali',
+    imageSource : require ('./assets/WellnessMaterial/wellness12.jpg'),
+    Icon : "shield-virus"
+  },
 ]
 
+const CardView =({topic, imageSource}) =>{
+return (
+  <View>
+    <Card style={styles.card} mode="elevated">
+        <Card.Cover
+          source={imageSource}
+        />
+        <Card.Title title={topic} />
+          
+    </Card>
+  </View>
+);
+};
 
 export default function WellnessPage() {
   return (
-      <View style={styles.container}>
+    <View style={styles.container}>
 
         <Drawer.Screen
-        options={{
+          options={{
           title: "Wellness",            
           headerShown: true,
           headerLeft: () => <DrawerToggleButton />,
-        }}
+          }}
+        />
+
+      
+      <Image
+        style={styles.topImage}
+        source={require('./assets/positiveVibe.jpg')}
       />
-        
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <ButtonTopic topic={AllTopic[0].topic} photo={AllTopic[0].imageSource} IconName={AllTopic[0].Icon}/>
-      <ButtonTopic topic={AllTopic[1].topic} photo={AllTopic[1].imageSource} IconName={AllTopic[1].Icon}/>
-      <ButtonTopic topic={AllTopic[2].topic} photo={AllTopic[2].imageSource} IconName={AllTopic[2].Icon}/>
-      <ButtonTopic topic={AllTopic[3].topic} photo={AllTopic[3].imageSource} IconName={AllTopic[3].Icon}/>
-      <ButtonTopic topic={AllTopic[4].topic} photo={AllTopic[4].imageSource} IconName={AllTopic[4].Icon}/>
-      <ButtonTopic topic={AllTopic[5].topic} photo={AllTopic[5].imageSource} IconName={AllTopic[5].Icon}/>
-      <ButtonTopic topic={AllTopic[6].topic} photo={AllTopic[6].imageSource} IconName={AllTopic[6].Icon}/>
-      <ButtonTopic topic={AllTopic[7].topic} photo={AllTopic[7].imageSource} IconName={AllTopic[7].Icon}/>
-      <ButtonTopic topic={AllTopic[8].topic} photo={AllTopic[8].imageSource} IconName={AllTopic[8].Icon}/>
-      <ButtonTopic topic={AllTopic[9].topic} photo={AllTopic[9].imageSource} IconName={AllTopic[9].Icon}/>
+
+      <Text style={styles.text}> Swipe for more quotes </Text>
+
+    <ScrollView style={styles.CardContainer} >
+          <CardView topic={AllTopic[10].topic} imageSource={AllTopic[10].imageSource} />
+          <CardView topic={AllTopic[11].topic} imageSource={AllTopic[11].imageSource} />
+          <CardView topic={AllTopic[0].topic} imageSource={AllTopic[0].imageSource} />
+          <CardView topic={AllTopic[1].topic} imageSource={AllTopic[1].imageSource} />
+          <CardView topic={AllTopic[2].topic} imageSource={AllTopic[2].imageSource} />
+          <CardView topic={AllTopic[3].topic} imageSource={AllTopic[3].imageSource} />
+          <CardView topic={AllTopic[4].topic} imageSource={AllTopic[4].imageSource} />
+          <CardView topic={AllTopic[5].topic} imageSource={AllTopic[5].imageSource} />
+          <CardView topic={AllTopic[6].topic} imageSource={AllTopic[6].imageSource} />
+          <CardView topic={AllTopic[7].topic} imageSource={AllTopic[7].imageSource} />
+          <CardView topic={AllTopic[8].topic} imageSource={AllTopic[8].imageSource} />
+          <CardView topic={AllTopic[9].topic} imageSource={AllTopic[9].imageSource} />
     </ScrollView>
 
-      </View>
+    </View>
   );
 }
 
@@ -92,6 +126,34 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "black",
     alignItems: "center",
-    justifyContent: "center",
+    //justifyContent: "center",
   },
+  topImage: {
+    marginTop: 30,
+    marginBottom: 20,
+    //marginHorizontal: 10,
+    width: 400,
+    height: 250,
+  },
+  words: {
+    marginVertical: 10,
+    color: "white",
+    fontSize: 20,
+  },
+  button:{
+    backgroundColor: "#212121"
+  },
+  card: {
+    //marginTop: 10,
+    width: 400,
+    marginHorizontal: 10,
+    marginVertical: 5,
+  },
+  CardContainer:{
+  
+  },
+  text:{
+    color: "white",
+    marginTop:20,
+  }
 });
