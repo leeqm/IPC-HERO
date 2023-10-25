@@ -36,6 +36,14 @@ const AllTopic = [
 export default function IPC() {
     return (
       <View style={styles.container}>
+
+        <Text style={styles.HeaderText}>🦸 You’re the IPC Hero! 🦸 </Text>
+        <Text style={styles.HeaderText}>
+        Good infection prevention and control practices saves lives. Your efforts save lives every day. Be the hero your patients and loved ones need! 💪
+
+        </Text>
+        <Text style={styles.headertext}> ⬇️ Click On Topic Below ⬇️ </Text>
+
         <ScrollView showsVerticalScrollIndicator={false}>
           <ButtonTopic topic={AllTopic[0].topic} photo={AllTopic[0].imageSource} IconName={AllTopic[0].Icon}/>
           <ButtonTopic topic={AllTopic[1].topic} photo={AllTopic[1].imageSource} IconName={AllTopic[1].Icon}/>
@@ -53,5 +61,18 @@ export default function IPC() {
       backgroundColor: "black",
       alignItems: "center",
       justifyContent: "center",
+    },
+    HeaderText:{
+      color: "white",
+      alignContent: "center",
+      justifyContent: "center",
+      marginVertical: 10,
+      marginHorizontal: 13,
+      fontSize: 20,
+    },
+    headertext:{
+      fontSize: 15,
+      marginTop: 30,
+      color: "white",
     },
   });

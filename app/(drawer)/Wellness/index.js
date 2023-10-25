@@ -100,7 +100,7 @@ export default function WellnessPage() {
         source={require('./assets/positiveVibe.jpg')}
       />
 
-      <Text style={styles.text}> Swipe for more quotes </Text>
+      <Text style={styles.text}> ⬇️ Swipe for more quotes ⬇️ </Text>
 
     <ScrollView style={styles.CardContainer} >
           <CardView topic={AllTopic[10].topic} imageSource={AllTopic[10].imageSource} />
@@ -155,5 +155,6 @@ const styles = StyleSheet.create({
   text:{
     color: "white",
     marginTop:20,
+    fontSize: 15,
   }
 });

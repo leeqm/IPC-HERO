@@ -10,7 +10,7 @@ export default function HomePage() {
 
   const naviToAwareness = () => {router.push("/Awareness")};
   const naviToWellness = () => {router.push("/Wellness")};
-  const naviToGoal = () => {router.push("/Wellness")};
+  const naviToGoal = () => {router.push("/Daily%20Goal")};
   const [userName, setUserName] = useState(null);
 
   const user = auth.currentUser;
@@ -53,13 +53,16 @@ export default function HomePage() {
         </View>
 
         <View style={styles.DailyGoalContainer}>
-          <Text style={{ fontSize: 40, color: "white"}}> Daily Goal </Text>
+          <Text style={{ fontSize: 40, color: "white"}}> Daily Goal Progress </Text>
+          <Text style={styles.Words}> (OTW building) </Text>
         </View>
 
+        <Text style={{ fontSize: 40, color: "white", paddingTop: 100}}> Categories </Text>
+
         <View style={styles.ButtonContainer}>
-          <Button title='Router to awareness' onPress={naviToAwareness}/>
-          <Button title='Router to Wellness' onPress={naviToWellness}/>
-          <Button title='Router to Goal' onPress={naviToGoal}/>
+          <Button title='Awareness' onPress={naviToAwareness}/>
+          <Button title='Wellness' onPress={naviToWellness}/>
+          <Button title='Daily Goal' onPress={naviToGoal}/>
         </View>
 
       </View>
@@ -70,7 +73,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#121212",
-    //alignItems: "center",
+    alignItems: "center",
     //justifyContent: "center",
   },
   WelcomeContainer: {
@@ -81,7 +84,7 @@ const styles = StyleSheet.create({
   },
   ButtonContainer: {
     alignItems: "center",
-    //marginTop: 1,
+    marginTop: 20,
     justifyContent: "center",
     marginBottom: 10,
   },
@@ -90,5 +93,13 @@ const styles = StyleSheet.create({
     //marginTop: 1,
     justifyContent: "center",
     marginBottom: 10,
+    backgroundColor: "grey"
   },
+  Words:{
+    color: "white",
+    justifyContent: "center",
+    //alignItems: "center",
+    fontSize: 40,
+
+  }
 });

@@ -47,14 +47,15 @@ export default function ButtonTopic ({topic, photo, IconName }) {
         onPress={() => setModalVisible(true)} 
       
       >
-
+        <Text style={styles.textStyle}>{topic}</Text>
+        {/* 
         <FontAwesome5
                 name= {IconName}
                 size={25}
                 color="#25292e"
                 style={styles.buttonIcon}
               />
-        <Text style={styles.textStyle}>{topic}</Text>
+        */}
       </Pressable>
     </View>
 
@@ -110,6 +111,7 @@ export default function ButtonTopic ({topic, photo, IconName }) {
       color: 'white',
       fontWeight: 'bold',
       textAlign: 'center',
+ 
     },
     modalText: {
       marginBottom: 15,

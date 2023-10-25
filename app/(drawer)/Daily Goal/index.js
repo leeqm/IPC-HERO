@@ -49,8 +49,12 @@ export default function GoalPage() {
           {/* Countdown Progress Bar */}
           <View> 
             <Text style={{ color: "white", fontSize: 30, marginTop: 50 }}> Progress Bar </Text>
-            
+  
           </View>
+
+          <View style={styles.DailyGoalContainer}>
+          <Text style={{ fontSize: 40, color: "white"}}> (OTW building) </Text>
+        </View>
         </View>
     );
 }
@@ -61,5 +65,12 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     alignItems: "center",
     //justifyContent: "center",
+  },
+  DailyGoalContainer: {
+    alignItems: "center",
+    //marginTop: 1,
+    justifyContent: "center",
+    marginBottom: 10,
+    backgroundColor: "grey"
   },
 });

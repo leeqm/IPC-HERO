@@ -18,18 +18,13 @@ export default function DrawerLayout() {
       />
 
       <Drawer.Screen
-        name="profile"
-        options={{
-          drawerLabel: "Profile",
-          title: "Profile",
-        }}
-      />
-
-      <Drawer.Screen
         name="Awareness"
         options={{
           drawerLabel: "Awareness",
           title: "Awareness",
+          drawerIcon : ({size, color}) => {
+            return <Ionicons name="bulb" size={size} color={color} />
+            },
         }}
       />
 
@@ -38,6 +33,9 @@ export default function DrawerLayout() {
         options={{
           drawerLabel: "Wellness",
           title: "Wellness",
+          drawerIcon : ({size, color}) => {
+            return <Ionicons name="heart" size={size} color={color} />
+            },
         }}
       />
 
@@ -46,6 +44,19 @@ export default function DrawerLayout() {
         options={{
           drawerLabel: "Daily Goal",
           title: "Daily Goal",
+          drawerIcon : ({size, color}) => {
+            return <Ionicons name="checkbox" size={size} color={color} />
+            },
+        }}
+      />
+      <Drawer.Screen
+        name="profile"
+        options={{
+          drawerLabel: "Profile",
+          title: "Profile",
+          drawerIcon : ({size, color}) => {
+            return <Ionicons name="person-sharp" size={size} color={color} />
+            },
         }}
       />
     </Drawer>
