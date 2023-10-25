@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "routing-fun",
+    "name": "IPC",
     "scheme": "your-app-scheme",
-    "slug": "routing-fun",
+    "slug": "IPC",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
