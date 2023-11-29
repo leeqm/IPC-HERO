@@ -2,12 +2,15 @@
 
 ## 🚑An app for ICU healhcare worker🚑
 ![app mock up!](/preview/mockup.png "App Mock Up")
-This app is an initiative from University Malaya research fund, on the topic of IPC (Infection Prevention and Control).  
+This app is an initiative from the Ministry of Higher Education Research Fund conducted by Universiti Malaya to enhance healthcare workers' infection prevention and control (IPC) practices. 
 
-The purpose of this app is to be a reminder app that aims to increase user's awareness towards IPC.  
+The app serves as a supplement to the IPC training, aiming to enhance users' knowledge, awareness, and practices related to IPC.
 
-This is done by keep reminds the user about IPC knowledge and also their self-proposed approach as their monthly goal.  
+It is achieved within the app via:   
+1) providing relevant IPC information and;
+2) integrating the goals users established during their IPC training.
 
+The app then serves as a reminder for users to maintain proper IPC practices and track their established goals on a daily basis.
 ## Signup & Login Pages
 ## *Awareness* Page; provide Infection Prevention tips for user
 ## *Wellness* Page; provide motivation quotes for user
