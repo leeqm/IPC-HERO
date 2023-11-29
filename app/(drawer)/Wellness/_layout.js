@@ -4,10 +4,10 @@ export default function WellnessLayout() {
   return <Stack 
   screenOptions={{
     headerStyle: {
-      backgroundColor: 'red',
+      backgroundColor: '#121212',
       height: 10
     },
-    headerTintColor: '#fff',
+    headerTintColor: 'white',
     headerTitleStyle: {
       fontWeight: 'bold',
     },

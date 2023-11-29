@@ -11,15 +11,17 @@ export default function AwarenessPage() {
         options={{
           title: "Awareness",            
           headerShown: true,
-          headerLeft: () => <DrawerToggleButton />,
+          headerLeft: () => <DrawerToggleButton tintColor="white" />,
         }}
       />
 
-      <Image
-        style={styles.topImage}
-        source={require('./assets/AwarenessImportant.jpg')}
-      />
-
+      <View style={styles.headerContainer}>
+        <Image
+          style={styles.topImage}
+          source={require('./assets/AwarenessImportant.jpg')}
+        />
+      </View>
+      <View style={styles.topicContainer}>
       <Text style={styles.headertext}> ⬇️ Click On Topic Below ⬇️ </Text>
 
       <ScrollView showsVerticalScrollIndicator={false} style={styles.ScrollContainer} >
@@ -28,6 +30,7 @@ export default function AwarenessPage() {
         <Link href={"/Awareness/ANTIMICROBIAL%20RESISTANCE"} asChild>
           <Pressable style={styles.button}>
             <Text style={styles.textStyle}>ANTIMICROBIAL RESISTANCE (AMR)</Text>
+
           </Pressable>
         </Link>
         </View>
@@ -89,7 +92,7 @@ export default function AwarenessPage() {
         </View>
 
       </ScrollView>
-
+      </View>
       </View>
   );
 }
@@ -97,7 +100,7 @@ export default function AwarenessPage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#121212",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -129,6 +132,7 @@ const styles = StyleSheet.create({
   headertext:{
     fontSize: 15,
     marginTop: 30,
+    color: "white"
   },
   ScrollContainer:{
 
@@ -136,5 +140,15 @@ const styles = StyleSheet.create({
   topImage:{
     width:400,
     height:350,
+  },
+  headerContainer: {
+    flex: 1,
+    justifyContent:"center",
+    alignItems: "center"
+  },
+  topicContainer:{
+    flex:1,
+    justifyContent:"center",
+    alignItems: "center"
   }
 });

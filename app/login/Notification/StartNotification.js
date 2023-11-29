@@ -15,7 +15,7 @@ export const StartNotification = () => {
         }),
       });
 
-      const linkToDifferentPages = [
+      const linkToAwarenessPages = [
         {
           PageTopic : '🚨 Antimicrobial Resistance Alert! 🚨',
           bodyText : "\n Did you know that antimicrobial resistance is an urgent global public health threat and was associated with nearly 5 million deaths in 2019. Let's learn more about AMR and combat this critical issue together. Your awareness matters! \n \n Click to learn more!",
@@ -56,9 +56,73 @@ export const StartNotification = () => {
           bodyText : "\n Ventilator patients face high risks, including ventilator-associated pneumonia (VAP), venous thromboembolism (VTE), and stress-induced gastrointestinal bleeding. Follow the 5-Element Ventilator Bundle to protect those in your care. \n \n Click to learn more!",
           urlPages : '/Awareness/Ventilator%20Care Bundle'
         },
-      ]
+      ];
 
-      async function schedulePushNotification() {
+      const linkToWellnessPages = [
+        {
+          PageTopic : 'Al-Ghazali',
+          bodyText : "\n 💭 To get what you love, you must first be patient with what you hate.",
+          urlPages : '/Wellness'
+        },
+        {
+          PageTopic : 'Muhammad Ali',
+          bodyText : "\n 💭 You dont lose if you get knocked down; you lose if you stay down.",
+          urlPages : '/Wellness'
+        },
+        {
+          PageTopic : 'William J.Clinton',
+          bodyText : "\n 💭 If you live long enough, you'll make mistakes. But if you learn from them, you'll be a better person. It's how you handle adversity, not know it affects you. The main thing is never quit, never quit, never quit.",
+          urlPages : '/Wellness'
+        },
+        {
+          PageTopic : 'Rotan Tata',
+          bodyText : "\n 💭 Ups and downs in life are very important to keep us going, because a straight line even in ECG means we are not alive.",
+          urlPages : '/Wellness'
+        },
+        {
+          PageTopic : 'T.S.Eliot',
+          bodyText : "\n 💭 Every moment is a fresh beginning",
+          urlPages : '/Wellness'
+        },
+        {
+          PageTopic : 'Eleanor Roosevelt',
+          bodyText : "\n 💭 No one can make you feel inferior without you consent.",
+          urlPages : '/Wellness'
+        },
+        {
+          PageTopic : 'Steve Jobs',
+          bodyText : "\n 💭 Being the richest man in the cemetery doesn't matter to me...Going to bed at night saying we've done something wonderful...that's what matters to me.",
+          urlPages : '/Wellness'
+        },
+        {
+          PageTopic : 'Theodone Roosevelt',
+          bodyText : "\n 💭 With self-discipline most anything is possible",
+          urlPages : '/Wellness'
+        },
+        {
+          PageTopic : 'Barack Obama',
+          bodyText : "\n 💭 The best way to not feel hopeless is to get up and do something. Dont wait for good things to happen to you. If you go out and make some good things happen, you will fill the world with hope, you will fill yourself with hope.",
+          urlPages : '/Wellness'
+        },
+        {
+          PageTopic : 'Albert Einstein',
+          bodyText : "\n 💭 In the middle of every difficulty lies opportunity.",
+          urlPages : '/Wellness'
+        },
+        {
+          PageTopic : 'Thomas A.Edison',
+          bodyText : "\n 💭 I have not failed. I've just found 10,000 ways that won't work.",
+          urlPages : '/Wellness'
+        },
+        {
+          PageTopic : 'Ronald Reagan',
+          bodyText : "\n 💭 We can't help everyone, but everyone can help someone",
+          urlPages : '/Wellness'
+        },
+      ];
+
+
+      async function scheduleAwarenessNotification() {
         
         for (let i = 0; i <=8; i++) { 
           
@@ -76,9 +140,38 @@ export const StartNotification = () => {
 
           await Notifications.scheduleNotificationAsync({
             content: {
-             title: linkToDifferentPages[i].PageTopic,
-              body: linkToDifferentPages[i].bodyText,
-              data:  {url: linkToDifferentPages[i].urlPages },
+             title: linkToAwarenessPages[i].PageTopic,
+              body: linkToAwarenessPages[i].bodyText,
+              data:  {url: linkToAwarenessPages[i].urlPages },
+            },
+            trigger: {
+               date: notificationSeconds,
+            },
+         });
+        }
+      };
+
+      async function scheduleWellnessNotification() {
+        
+        for (let i = 0; i <=8; i++) { 
+          
+          //calculate next tuesday at 8am
+          const notificationDate = moment()
+          .day("Tuesday")
+          .hour(8)
+          .minute(0)
+          .second(0) 
+          .millisecond(0)
+          .add(i - 1, 'weeks')
+          .toDate();
+
+          const notificationSeconds = moment().add(i + 5, 'seconds').toDate();
+
+          await Notifications.scheduleNotificationAsync({
+            content: {
+             title: linkToWellnessPages[i].PageTopic,
+              body: linkToWellnessPages[i].bodyText,
+              data:  {url: linkToWellnessPages[i].urlPages },
             },
             trigger: {
                date: notificationSeconds,
@@ -89,7 +182,8 @@ export const StartNotification = () => {
 
 
       return(
-        schedulePushNotification()
+        scheduleAwarenessNotification(),
+        scheduleWellnessNotification()
       );
 
 

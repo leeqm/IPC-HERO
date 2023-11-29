@@ -7,6 +7,7 @@ import {
   Platform,
   Dimensions,
   Alert,
+  Image
 } from "react-native";
 import React, { useState } from "react";
 import Colors from "../constants/Colors";
@@ -14,6 +15,8 @@ import { Feather } from "@expo/vector-icons";
 import { auth, db } from "../firebase/firebase";
 import { Entypo } from "@expo/vector-icons";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import Loader from "../components/Loader";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const { width, height } = Dimensions.get("window");
 let top;
@@ -27,6 +30,7 @@ export default function Login({ navigation }: { navigation: any }) {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<any>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const [ hidePassword, setHidePassword] = useState(true);
 
   const handleSignin = async () => {
     setLoading(true);
@@ -47,9 +51,15 @@ export default function Login({ navigation }: { navigation: any }) {
   return (
     <View style={styles.container}>
       <View style={styles.loginHeader}>
-        <Text style={styles.loginHeaderText}>Let's sign you in 🚀</Text>
+      <Image
+          style={styles.topImage}
+          source={require('../components/nurse_login.png')}
+        />
+        <Text style={styles.loginHeaderText}>Let's get started, </Text>
+        <Text style={styles.loginHeaderText}>IPC Hero </Text>
       </View>
-
+      <Loader visible = {loading} />
+      
       <View style={styles.loginContainer}>
         {/* Email */}
         <View style={styles.emailContainer}>
@@ -63,14 +73,26 @@ export default function Login({ navigation }: { navigation: any }) {
         </View>
         {/* Password */}
         <View style={styles.passwordContainer}>
-          <Text style={styles.passwordText}>Password</Text>
+
+          <Text style={styles.passwordText}>Password</Text> 
+
+          <View style={styles.inputContainer}>
+
           <TextInput
             style={styles.passwordInput}
             placeholder="Enter your password"
             value={password}
-            secureTextEntry={true}
+            secureTextEntry={hidePassword}
             onChangeText={(text) => setPassword(text)}
           />
+
+          <Icon
+            onPress={() => setHidePassword(!hidePassword)}
+            name={hidePassword ? 'eye-outline' : 'eye-off-outline'}
+            style={{color: Colors.darkBlue, fontSize: 22, marginTop: 20, paddingRight:20}}
+          />
+
+          </View>
         </View>
         {/* Forgot Password */}
         <View style={styles.forgotContainer}>
@@ -103,8 +125,9 @@ export default function Login({ navigation }: { navigation: any }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 15,
     marginTop: height * 0.05,
+    justifyContent: "center",
+    alignContent: "center"
   },
   arrowContainer: {
     width: 40,
@@ -116,17 +139,28 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   loginHeader: {
+    flex: 1,
+    width: "100%",
+    flexDirection: "column",
     marginTop: 20,
+    marginHorizontal: 15,
+    justifyContent: "center",
+    alignItems: "center"
   },
   loginHeaderText: {
     fontSize: 36,
     fontWeight: "bold",
+    justifyContent: "center",
+    alignItems: "center"
   },
   loginContainer: {
-    marginTop: 20,
+    flex: 1,
+    marginVertical: 20,
+    marginHorizontal: 15,
   },
   emailContainer: {
     marginTop: 20,
+    
   },
   emailText: {
     fontSize: 16,
@@ -151,7 +185,7 @@ const styles = StyleSheet.create({
   },
   passwordInput: {
     marginTop: 10,
-    width: "100%",
+    width: "90%",
     height: 50,
     backgroundColor: Colors.light,
     borderRadius: 8,
@@ -199,4 +233,14 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     marginRight: 5,
   },
+  inputContainer: {
+    //height: 55,
+    backgroundColor: Colors.light,
+    flexDirection: 'row',
+  },
+  topImage:{
+    width:156,
+    height:300,
+    marginRight: 50
+  }
 });

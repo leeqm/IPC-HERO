@@ -90,7 +90,7 @@ export default function WellnessPage() {
           options={{
           title: "Wellness",            
           headerShown: true,
-          headerLeft: () => <DrawerToggleButton />,
+          headerLeft: () => <DrawerToggleButton tintColor="white"/>,
           }}
         />
 
@@ -124,7 +124,7 @@ export default function WellnessPage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "black",
+    backgroundColor: "#121212",
     alignItems: "center",
     //justifyContent: "center",
   },
