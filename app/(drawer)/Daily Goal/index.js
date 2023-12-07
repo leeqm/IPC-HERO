@@ -14,7 +14,7 @@ export default function GoalPage() {
   const [modalVisible, setModalVisible] = useState(false);
   const [counterRunning, setCounterRunning] = useState(false);
   const [userGoal, setUserGoal] = useState('');
-  const [goalStartTime, setGoalStartTime] = useState('');
+  const [goalStartTime, setGoalStartTime] = useState(''); 
   const [countdownInSeconds, setCountdownInSeconds] = useState('');
 
   const user = auth.currentUser;
