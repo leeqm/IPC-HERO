@@ -7,7 +7,8 @@ import {
   Platform,
   Dimensions,
   Alert,
-  Image
+  Image,
+  StatusBar
 } from "react-native";
 import React, { useState } from "react";
 import Colors from "../constants/Colors";
@@ -19,6 +20,7 @@ import Loader from "../components/Loader";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const { width, height } = Dimensions.get("window");
+console.log(height);
 let top;
 if (Platform.OS === "ios") {
   top = height * 0.02;
@@ -50,6 +52,10 @@ export default function Login({ navigation }: { navigation: any }) {
 
   return (
     <View style={styles.container}>
+      <StatusBar 
+        hidden = {true}
+        backgroundColor="white"
+      />
       <View style={styles.loginHeader}>
       <Image
           style={styles.topImage}
@@ -125,7 +131,8 @@ export default function Login({ navigation }: { navigation: any }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: height * 0.05,
+    //marginTop: height * 0.1,
+    //marginTop: 20,
     justifyContent: "center",
     alignContent: "center"
   },
@@ -148,6 +155,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   loginHeaderText: {
+    //height: "100%",
     fontSize: 36,
     fontWeight: "bold",
     justifyContent: "center",
@@ -159,7 +167,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
   },
   emailContainer: {
-    marginTop: 20,
+    flex:1,
+    //marginTop: 20,
     
   },
   emailText: {
@@ -169,7 +178,8 @@ const styles = StyleSheet.create({
   emailInput: {
     marginTop: 10,
     width: "100%",
-    height: 50,
+    aspectRatio: 6,
+    //height: "80%",
     backgroundColor: Colors.light,
     borderWidth: 1,
     borderColor: Colors.light,
@@ -177,16 +187,18 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   passwordContainer: {
+    flex:1,
     marginTop: 20,
   },
   passwordText: {
+    marginTop:10,
     fontSize: 16,
     fontWeight: "bold",
   },
   passwordInput: {
     marginTop: 10,
     width: "90%",
-    height: 50,
+    aspectRatio: 6,
     backgroundColor: Colors.light,
     borderRadius: 8,
     paddingLeft: 10,
@@ -194,18 +206,21 @@ const styles = StyleSheet.create({
     borderColor: Colors.light,
   },
   forgotContainer: {
+    flex:0.5,
     marginTop: 20,
     alignItems: "flex-end",
   },
   forgotText: {
+    marginTop:10,
     fontSize: 16,
     fontWeight: "bold",
     color: Colors.primary,
   },
   loginButton: {
-    marginTop: 20,
+    flex:0.8,
+    marginTop: 10,
     width: "100%",
-    height: 50,
+    height: "100%",
     backgroundColor: Colors.primary,
     borderRadius: 8,
     justifyContent: "center",
@@ -217,6 +232,7 @@ const styles = StyleSheet.create({
     color: Colors.white,
   },
   signupGroup: {
+    flex:0.5,
     flexDirection: "row",
     marginTop: 10,
     justifyContent: "center",
@@ -234,13 +250,15 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   inputContainer: {
-    //height: 55,
     backgroundColor: Colors.light,
     flexDirection: 'row',
   },
   topImage:{
-    width:156,
-    height:300,
-    marginRight: 50
+    //width:156,
+    //height: 300,
+    height:'80%',
+    aspectRatio: 0.5,
+    marginRight: 50,
+    resizeMode: 'contain',
   }
 });

@@ -4,10 +4,10 @@ export default function GoalLayout() {
   return <Stack 
   screenOptions={{
     headerStyle: {
-      backgroundColor: '#64379f',
+      backgroundColor: '#121212',
       height: 10
     },
-    headerTintColor: '#fff',
+    headerTintColor: 'white',
     headerTitleStyle: {
       fontWeight: 'bold',
     },

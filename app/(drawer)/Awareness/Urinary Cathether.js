@@ -3,7 +3,7 @@ import ButtonTopic from './components/ButtonTopic';
 
 const AllTopic = [
   {
-    topic : 'Dos for Urinary Cathether Care',
+    topic : 'Catheter Care Pocket Card',
     imageSource : require ('./assets/AwarenessMaterial/Urinary.png'),
     Icon : "hands-wash"
   },
@@ -41,7 +41,7 @@ export default function Urinary() {
       justifyContent: "center",
       marginVertical: 10,
       marginHorizontal: 13,
-      fontSize: 20,
+      fontSize: 17,
     },
     headertext:{
       fontSize: 15,

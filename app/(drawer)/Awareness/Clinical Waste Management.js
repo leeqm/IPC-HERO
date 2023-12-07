@@ -9,7 +9,7 @@ const AllTopic = [
   },
 
   {
-    topic : 'Do and dont',
+    topic : 'Proper Waste Management',
     imageSource : require ('./assets/AwarenessMaterial/waste2.png'),
     Icon : "hands-wash"
   },
@@ -46,7 +46,7 @@ export default function CWM() {
       justifyContent: "center",
       marginVertical: 10,
       marginHorizontal: 13,
-      fontSize: 20,
+      fontSize: 17,
     },
     headertext:{
       fontSize: 15,

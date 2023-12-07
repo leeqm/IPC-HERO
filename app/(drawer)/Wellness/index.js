@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, ScrollView, Image } from "react-native";
+import { Text, View, StyleSheet, ScrollView, Image, Dimensions } from "react-native";
 import { DrawerToggleButton } from "@react-navigation/drawer";
 import { Drawer } from "expo-router/drawer";
 import { Avatar, Button, Card } from 'react-native-paper';
@@ -68,12 +68,15 @@ const AllTopic = [
   },
 ]
 
+const { width, height } = Dimensions.get("window");
+
 const CardView =({topic, imageSource}) =>{
 return (
   <View>
     <Card style={styles.card} mode="elevated">
         <Card.Cover
           source={imageSource}
+          //style={{ width:width}}
         />
         <Card.Title title={topic} />
           
@@ -129,11 +132,11 @@ const styles = StyleSheet.create({
     //justifyContent: "center",
   },
   topImage: {
-    marginTop: 30,
-    marginBottom: 20,
+    //marginTop: 10,
+    marginBottom: 10,
     //marginHorizontal: 10,
-    width: 400,
-    height: 250,
+    width:"100%",
+    height: 200,
   },
   words: {
     marginVertical: 10,
@@ -145,16 +148,19 @@ const styles = StyleSheet.create({
   },
   card: {
     //marginTop: 10,
-    width: 400,
+    width: width*0.95,
     marginHorizontal: 10,
     marginVertical: 5,
   },
   CardContainer:{
+    width:"100%",
+    marginHorizontal:20
   
   },
   text:{
     color: "white",
-    marginTop:20,
+    marginTop:10,
+    marginBottom:10,
     fontSize: 15,
   }
 });

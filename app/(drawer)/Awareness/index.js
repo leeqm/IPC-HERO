@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Pressable, ScrollView, Image } from "react-native";
+import { Text, View, StyleSheet, Pressable, ScrollView, Image, StatusBar } from "react-native";
 import { DrawerToggleButton } from "@react-navigation/drawer";
 import { Drawer } from "expo-router/drawer";
 import { Link } from "expo-router";
@@ -14,7 +14,7 @@ export default function AwarenessPage() {
           headerLeft: () => <DrawerToggleButton tintColor="white" />,
         }}
       />
-
+    
       <View style={styles.headerContainer}>
         <Image
           style={styles.topImage}
@@ -111,8 +111,9 @@ const styles = StyleSheet.create({
     paddingHorizontal:30,
     //elevation: 2,
     borderRadius: 20,
-    width: 350,
-    height: 80,
+    width: "100%",
+    //width: 350,
+    height: 60,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
@@ -123,7 +124,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 17,
   },
 
   topic: {
@@ -132,17 +133,20 @@ const styles = StyleSheet.create({
   headertext:{
     fontSize: 15,
     marginTop: 30,
-    color: "white"
+    color: "white",
+    
   },
   ScrollContainer:{
 
   },
   topImage:{
-    width:400,
-    height:350,
+    //width:400,
+    //height:350,
+    height:"100%",
+    resizeMode:"contain"
   },
   headerContainer: {
-    flex: 1,
+    flex: 0.7,
     justifyContent:"center",
     alignItems: "center"
   },

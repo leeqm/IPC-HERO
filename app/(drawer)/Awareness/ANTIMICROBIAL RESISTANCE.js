@@ -45,7 +45,7 @@ export default function AMR() {
       justifyContent: "center",
       marginVertical: 10,
       marginHorizontal: 13,
-      fontSize: 20,
+      fontSize: 17,
     },
     headertext:{
       fontSize: 15,

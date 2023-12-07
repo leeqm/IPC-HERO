@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Button, Pressable, Image } from "react-native";
+import { Text, View, StyleSheet, Button, Pressable, Image, StatusBar } from "react-native";
 import React, { useState, useEffect } from "react";
 import { DrawerToggleButton } from "@react-navigation/drawer";
 import { Drawer } from "expo-router/drawer";
@@ -51,6 +51,10 @@ export default function HomePage() {
           headerShown: true,
           headerLeft: () => <DrawerToggleButton tintColor="white" />,
         }}
+      />
+      <StatusBar 
+        hidden = {false}
+        backgroundColor="white"
       />
 
         {/* welcome back user */}
@@ -166,13 +170,15 @@ const styles = StyleSheet.create({
     color: 'black', // You can customize the text color
     fontSize: 16,
     fontWeight: "bold",
-    paddingTop: 13
+    //paddingTop: 13
   },  
   Image: {
-    width:70,
-    height:90,
+    width: "100%",
+    height:"100%",
+    resizeMode:"contain"
   },
   ButtonRow:{
+    height: "40%",
     flexDirection:"row",
     justifyContent: "center",
     //alignContent: "center",

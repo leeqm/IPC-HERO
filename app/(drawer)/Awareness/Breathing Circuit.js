@@ -15,7 +15,7 @@ export default function Breath() {
   
         <Text Text style={styles.HeaderText}>💡 Infection Control Tip!💡</Text>
         <Text style={styles.HeaderText}>
-            Did you know tDid you know that ventilator breathing circuits and tubing MUST NOT be routinely changed for infection control purposes. The best practice is to change the circuit only when it's visibly soiled (KKM, 2018). Stay informed, stay safe!
+          Did you know that ventilator breathing circuits and tubing MUST NOT be routinely changed for infection control purposes. The best practice is to change the circuit only when it's visibly soiled (KKM, 2018). Stay informed, stay safe!
 
         </Text>
         <Text style={styles.headertext}> ⬇️ Click On Topic Below ⬇️ </Text>
@@ -41,7 +41,7 @@ export default function Breath() {
       justifyContent: "center",
       marginVertical: 10,
       marginHorizontal: 13,
-      fontSize: 20,
+      fontSize: 17,
     },
     headertext:{
       fontSize: 15,
