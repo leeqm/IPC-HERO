@@ -15,6 +15,7 @@ export default function GoalPage() {
   const [counterRunning, setCounterRunning] = useState(false);
   const [userGoal, setUserGoal] = useState('');
   const [goalStartTime, setGoalStartTime] = useState(''); 
+  const [goalCreateTime, setGoalCreateTime] = useState(''); 
   const [countdownInSeconds, setCountdownInSeconds] = useState('');
 
   const user = auth.currentUser;
@@ -26,32 +27,27 @@ export default function GoalPage() {
     }, {merge:true} );
   };
 
-  const UploadGoalStartTime = () => {
+  const UploadGoalStartTime = (time) => {
     const uid = user.uid;
+    //console.log("goalStartTime",goalStartTime);
     setDoc(doc(db, "users", uid), {
-      GoalStartTime: goalStartTime,
+      GoalStartTime: time,
     }, {merge:true} );
     
   };
 
   const GoalText = reminderText;
 
-  const handleNotification = () => {
+  const handleNotification = async() => {
     if (reminderText) {
       StartGoalNotification (GoalText); // start local push notification with user's goal
       console.log(reminderText);
       setModalVisible(false);                    // close text input modal
-
-      UploadUserGoal();                          // upload goal to firestore
-      getStartTime();                            // get current time as goalStartTime
-      //UploadGoalStartTime();                     // upload goalStartTime to firestore               
-      getCountDownSeconds();                     // 
-      setCounterRunning(true);                   // start count down
+      UploadUserGoal();                         // upload goal to firestore
+      //doAtStartTime();                            // get current time as goalStartTime
+      //setCounterRunning(true);                   // start count down
     }};
 
-  const counterFinish = () => {
-    
-  };
 
   const getUserGoalStartTime = async () => {
     const uid = user.uid;
@@ -63,39 +59,46 @@ export default function GoalPage() {
     if (docSnap.exists()) {
       const UserGoal = docSnap.data().Goal;
       const StartTime = docSnap.data().GoalStartTime;
-
       console.log("Document data:" , docSnap.data()); 
-
-      //
-      setGoalStartTime(StartTime);
+      setGoalCreateTime(StartTime);
       setUserGoal(UserGoal);
-
+      setReminderText(UserGoal);
     } else {
       console.log("No such document!");
     }
   };
 
-  async function getCountDownSeconds () {
-    const nowTime = await moment().format('YYYY-MM-DD HH:mm:ss');
-    const endTime = await moment(goalStartTime).add(30, 'days');
-    const secondsDifference = await endTime.diff(nowTime, 'seconds')
+  const getCountDownSeconds =()=> {
+    const nowTime =  moment().format('YYYY-MM-DD HH:mm:ss');
+    const endTime = moment(goalCreateTime).add(30, 'days');
+    const secondsDifference =  endTime.diff(nowTime, 'seconds');
     setCountdownInSeconds(secondsDifference);
     console.log("Count down seconds",countdownInSeconds);
-    console.log('goalStartTime', goalStartTime);
+    console.log('goalStartTime', goalCreateTime);
     console.log('nowTime', nowTime);
     console.log('endtime', endTime);
   };
 
-  async function getStartTime() {
-    const startTime = await moment().format('YYYY-MM-DD HH:mm:ss')
-    setGoalStartTime(startTime);
-    console.log("start time",startTime);
+  const getStartTime = ()=> {
+    const StartTime = moment().format('YYYY-MM-DD HH:mm:ss');
+    setGoalStartTime(StartTime);
+    //UploadGoalStartTime(StartTime);
+    console.log("start time",StartTime);
     console.log("goalStartTime",goalStartTime);
-    UploadGoalStartTime();
   };
 
+  const doAtStartTime =() => {
+    const StartTime = moment().format('YYYY-MM-DD HH:mm:ss');
+    UploadGoalStartTime(StartTime);
+    const endTime = moment().add(30, 'days');
+    const secondsDifference =  endTime('seconds');
+    setCountdownInSeconds(secondsDifference);
+    console.log('nowTime', nowTime);
+  }
+
   useEffect(() => {
-    //getUserGoalStartTime();
+    getUserGoalStartTime();
+    //UploadGoalStartTime();
     //if(!goalStartTime===""){setCounterRunning(true)};
   }, []);
 
@@ -117,13 +120,13 @@ export default function GoalPage() {
               style={styles.Image}
               source={require("../home/assets/dailygoal.png")}
             />
-            <Text style={{ fontSize: 30, color: "white", fontWeight:"bold" }}>30 days to form a new habit</Text>
+            <Text style={{ fontSize: 25, color: "white", fontWeight:"bold" }}>30 days to form a new habit</Text>
           </View>
 
           {/* Your Daily Goal: */}
           <View style={styles.SetGoalContainer} > 
             <Text style={{ flex:1,color: "black", fontSize: 20, fontWeight:"bold", paddingHorizontal: 10, paddingVertical:5 }}>Your Daily Goal :</Text>
-            <Text style={{ flex:2.5,color: "black",paddingHorizontal: 20, paddingVertical: 10 }}> {userGoal}, {countdownInSeconds} </Text>
+            <Text style={{ flex:2.5,color: "black",paddingHorizontal: 20, paddingVertical: 10 }}> {reminderText} </Text>
             <Pressable style={styles.button} onPress={() => setModalVisible(true)}>
               <Text style={styles.buttonText}>Set your goal</Text>
             </Pressable>
@@ -150,7 +153,7 @@ export default function GoalPage() {
 
       
 
-          {/* Countdown Progress Bar */}
+          {/* Countdown Progress Bar 
           <View style={styles.countDownContainer}>
             <Text style={{ color: "black", fontWeight:"bold", fontSize: 20, marginVertical:5 }}> Days Left From 30 Days : </Text>
             <Text>{countdownInSeconds}</Text>
@@ -161,10 +164,10 @@ export default function GoalPage() {
               //onPress={() => alert('hello')}
               size={30}
               timeToShow={['D','H','M']}
-              running = {true}
+              running = {counterRunning}
             />
 
-          </View>
+          </View>*/}
         </View>
     );
 };
@@ -194,17 +197,18 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   IntroContainer:{
-    flex: 2,
+    flex: 1,
     marginBottom: 15,
     marginHorizontal: 10,
     alignItems: "center",
     justifyContent:"center"
   },
   SetGoalContainer:{
-    flex: 1.5,
+    flex: 1,
     width: "90%",
     backgroundColor: '#D9D9D9', 
     marginBottom: 15,
+    marginTop: 10,
     marginHorizontal: 10,
     borderRadius: 10, 
     alignContent: "center",
@@ -220,8 +224,9 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   Image:{
-    width:300,
+    width:250,
     height:300,
+    resizeMode:"contain"
   },
   button:{
     flex:1,
