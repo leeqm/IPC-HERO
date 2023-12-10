@@ -22,11 +22,17 @@ export const StartGoalNotification = (Goal) => {
           const notificationSeconds = moment().add(i + 5, 'seconds').toDate();
           
           //every next day from the set reminder date
-          const ReminderDate = moment().add(i-1,'days').toDate();
+          const ReminderDate = moment()
+          .hour(8)
+          .minute(0)
+          .second(0)
+          .millisecond(0)
+          .add(i-1,'days')
+          .toDate();
 
           await Notifications.scheduleNotificationAsync({
             content: {
-             title: '🚨 30 days challenge !! Today is Day '+ i + ',keep it up 💪',
+             title: '🚨30 days challenge! 💪D-'+ i + ", keep it up!" ,
               body: 'Your goal :' + Goal ,
               data:  { url: '/Daily%20Goal'},
             },

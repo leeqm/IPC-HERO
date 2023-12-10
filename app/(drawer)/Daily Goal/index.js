@@ -7,6 +7,7 @@ import CountDown from 'react-native-countdown-component';
 import { auth, db } from "../../login/firebase/firebase";
 import { DocumentSnapshot, Firestore, doc, getDoc, setDoc } from "firebase/firestore";
 import moment, { Moment } from "moment";
+//import { StartNotification } from "../../login/Notification/StartNotification";
 
 export default function GoalPage() {
 
@@ -44,6 +45,7 @@ export default function GoalPage() {
       console.log(reminderText);
       setModalVisible(false);                    // close text input modal
       UploadUserGoal();                         // upload goal to firestore
+      alert("Goal has set successfully! keep going for 30 days!")
       //doAtStartTime();                            // get current time as goalStartTime
       //setCounterRunning(true);                   // start count down
     }};
@@ -137,7 +139,7 @@ export default function GoalPage() {
               <View style={styles.modal}>
                 <Text style={{ color: "black", fontSize: 30 }}>Your Daily Goal: </Text>
                 <TextInput
-                  style={{ height: 40, borderColor: 'grey', borderWidth: 1,color: 'black', marginVertical: 20, paddingHorizontal: 40 }}
+                  style={{ height: 40, borderColor: 'grey', borderWidth: 1,color: 'black', marginVertical: 20, paddingHorizontal: 40, height:100 }}
                   onChangeText={text => setReminderText(text)}
                   value={reminderText}
                   placeholder="Enter your daily goal"

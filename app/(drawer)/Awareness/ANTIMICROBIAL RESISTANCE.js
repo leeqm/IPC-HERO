@@ -3,12 +3,12 @@ import ButtonTopic from './components/ButtonTopic';
 
 const AllTopic = [
   {
-    topic : 'AMR',
+    topic : 'What is Antimicrobial resistance (AMR)?',
     imageSource : require ('./assets/AwarenessMaterial/AMR1.jpg'),
     Icon : "hands-wash"
   },
   {
-    topic : 'role to play',
+    topic : 'What can you do to reduce AMR?',
     imageSource : require ('./assets/AwarenessMaterial/AMR2.jpg'),
     Icon : "shield-virus"
   },

@@ -1,7 +1,7 @@
 import { Text, View, StyleSheet, Pressable, ScrollView, Image, StatusBar } from "react-native";
 import { DrawerToggleButton } from "@react-navigation/drawer";
 import { Drawer } from "expo-router/drawer";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 
 export default function AwarenessPage() {
   return (
@@ -14,6 +14,7 @@ export default function AwarenessPage() {
           headerLeft: () => <DrawerToggleButton tintColor="white" />,
         }}
       />
+
     
       <View style={styles.headerContainer}>
         <Image

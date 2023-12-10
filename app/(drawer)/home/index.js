@@ -1,22 +1,20 @@
-import { Text, View, StyleSheet, Button, Pressable, Image, StatusBar } from "react-native";
+import { Text, View, StyleSheet, Button, Pressable, Image, StatusBar, ScrollView, Dimensions } from "react-native";
 import React, { useState, useEffect, useFo } from "react";
 import { DrawerToggleButton } from "@react-navigation/drawer";
 import { Drawer } from "expo-router/drawer";
 import { router, Link } from 'expo-router';
 import { auth, db } from "../../login/firebase/firebase";
 import { DocumentSnapshot, Firestore, doc, getDoc } from "firebase/firestore";
+import { Card} from 'react-native-paper';
 
-
-
+const { w, h } = Dimensions.get("window");
 
 export default function HomePage() {
 
-  const naviToAwareness = () => {router.push("/Awareness")};
-  const naviToWellness = () => {router.push("/Wellness")};
-  const naviToGoal = () => {router.push("/Daily%20Goal")};
-  const naviToProfile = () => {router.push("/profile")};
   const [userName, setUserName] = useState(null);
   const [userGoal, setUserGoal] = useState("");
+
+  
 
   const user = auth.currentUser;
 
@@ -59,12 +57,12 @@ export default function HomePage() {
 
         {/* welcome back user */}
         <View style={styles.WelcomeContainer}>
-          <Text style={{ fontSize: 40, color: "white", fontWeight:"bold"}}>Hello {userName} </Text>
-          <Text style={{ fontSize: 40, color: "white", fontWeight:"bold"}}>Welcome back !!! </Text>
+          <Text style={{ fontSize: 30, color: "white", fontWeight:"bold"}}>Hello {userName} </Text>
+          <Text style={{ fontSize: 30, color: "white", fontWeight:"bold"}}>Welcome back !!! </Text>
         </View>
 
         <View style={styles.DailyGoalContainer}>
-          <Text style={{ fontSize: 30, color: "white"}}> Your daily goal: </Text>
+          <Text style={{ fontSize: 20, color: "white"}}> Your daily goal: </Text>
           <View style={styles.roundContainer}>
             {/*<Text style={styles.Words}> i wiwl jsjdf jfddfk skdkf kdfkdfk dkfkd kfff frfrfr rg </Text>*/}
             <Text style={styles.Words}> {userGoal} </Text>
@@ -75,43 +73,35 @@ export default function HomePage() {
         {/* create card for link to  4 pages */}
 
         <View style={styles.ButtonContainer}>
-        <Text style={{ fontSize: 30, color: "white"}}> Categories </Text>
-          <View style={styles.ButtonRow}>
-            <Pressable style={styles.button} onPress={naviToAwareness}>
-            <Image 
-              style={styles.Image}
-              source={require("./assets/awareness_card.png")}
-            />
-            <Text style={styles.buttonText}>Awareness</Text>
-            </Pressable>
+        <Text style={{ fontSize: 20, color: "white", marginTop:10}}> Overview </Text>
 
-            <Pressable style={styles.button} onPress={naviToWellness}>
-            <Image 
-              style={styles.Image}
-              source={require("./assets/wellness.png")}
-            />
-            <Text style={styles.buttonText}>Wellness</Text>
-            </Pressable>
-          </View>
+        <ScrollView style={styles.ScrollContainer} horizontal>
 
-          <View style={styles.ButtonRow}>
-            <Pressable style={styles.button} onPress={naviToGoal}>
-            <Image 
-              style={styles.Image}
-              source={require("./assets/goal_card.png")}
-            />
-            <Text style={styles.buttonText}>Daily Goal</Text>
-            </Pressable>
+        <Card style={styles.card} mode="elevated" onPress={()=>alert("Go to Menu ≡ at upper left corner to start explore!!")}>
+          <Card.Cover style={styles.CardImage} source={require("./assets/awareness_card.png")} />
+          <Card.Title title="Awareness"  />
+          <Card.Content>
+            <Text >Equip yourself with the basics of infection prevention & control</Text>
+          </Card.Content>
+        </Card>
 
-            <Pressable style={styles.button} onPress={naviToProfile}>
-            <Image 
-              style={styles.Image}
-              source={require("./assets/profile.png")}
-            />
-            <Text style={styles.buttonText}>Profile</Text>
-            </Pressable>
-            </View>
-        
+        <Card style={styles.card} mode="elevated" onPress={()=>alert("Go to Menu ≡ at upper left corner to start explore!!")}>
+          <Card.Cover style={styles.CardImage} source={require("./assets/wellness.png")} />
+          <Card.Title title="Wellness"  />
+          <Card.Content>
+            <Text >Life is full of ups and downs, fuel yourself with positive words</Text>
+          </Card.Content>
+        </Card>
+
+        <Card style={styles.card} mode="elevated" onPress={()=>alert("Go to Menu ≡ at upper left corner to start explore!!")}>
+          <Card.Cover style={styles.CardImage} source={require("./assets/goal_card.png")} />
+          <Card.Title title="Daily Goal"  />
+          <Card.Content>
+            <Text >Set your goal and take up the 30-day challenge to improve IPC</Text>
+          </Card.Content>
+        </Card>
+
+        </ScrollView>
         </View>
 
       </View>
@@ -127,16 +117,17 @@ const styles = StyleSheet.create({
     //justifyContent: "center",
   },
   WelcomeContainer: {
-    flex: 1,
+    flex: 0.5,
     //alignItems: "center",
     marginBottom: 20,
     justifyContent: "center",
   },
   ButtonContainer: {
-    flex: 3.5,
+    flex: 1.8,
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 20,
+    marginLeft:10
   },
   DailyGoalContainer: {
     width:"100%",
@@ -194,6 +185,23 @@ const styles = StyleSheet.create({
     height: "100%",
     alignItems:"center",
     justifyContent: "center"
-
+  },
+  ScrollContainer:{
+    
+  },
+  CardImage:{
+    //width: 100,
+    aspectRatio:1.5,
+    height: 100,
+  },
+  card: {
+    //marginTop: 10,
+    width: 200,
+    marginHorizontal: 5,
+    marginVertical: 5,
+  },
+  cardImage:{
+    width: 100,
+    height: 100,
   }
 });

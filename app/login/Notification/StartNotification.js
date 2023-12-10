@@ -122,17 +122,18 @@ export const StartNotification = () => {
         
         for (let i = 0; i <=19; i++) { 
           
+          
+          const x = i * 2;
           //calculate next 2 days
           const notificationDate = moment()
-          .day()
-          .hour(15)
+          .hour(11)
           .minute(0)
           .second(0) 
           .millisecond(0)
-          .add(i * 2, 'days')
+          .add( x, 'days')
           .toDate();
-
-          //const notificationSeconds = moment().add(i + 5, 'seconds').toDate();
+        
+          const notificationSeconds = moment().add(i + 5, 'seconds').toDate();
 
           await Notifications.scheduleNotificationAsync({
             content: {
