@@ -51,7 +51,7 @@ export default function HomePage() {
         }}
       />
       <StatusBar 
-        hidden = {false}
+        hidden = {true}
         backgroundColor="white"
       />
 
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     //justifyContent: "center",
   },
   WelcomeContainer: {
-    flex: 0.5,
+    flex: 0.8,
     //alignItems: "center",
     marginBottom: 20,
     justifyContent: "center",
